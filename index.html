@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>Cơ Chế Phản Ứng Hóa Học 12 - Interactive 3D Presentation</title>
+  
+  <!-- Google Fonts: Be Vietnam Pro & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Quantum Particle Canvas -->
+  <canvas id="bg-quantum-canvas"></canvas>
+
+  <!-- Custom Charge Probe Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="cursor-glow"></div>
+
+  <!-- Top Global Header / Navigation Status -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="lab-badge">
+        <span class="lab-pulse"></span>
+        <span class="lab-text">QUANTUM LAB • HÓA HỌC 12</span>
+      </div>
+      <div class="header-divider"></div>
+      <span class="topic-breadcrumb">Chuyên đề 1: Cơ chế phản ứng trong Hóa hữu cơ</span>
+    </div>
+
+    <div class="header-right">
+      <div class="interactive-tag" id="current-stage-tag">
+        <i data-lucide="orbit"></i>
+        <span>Mô hình: Ethylene (C₂H₄) Orbital π</span>
+      </div>
+      <button class="icon-btn" id="help-btn" title="Hướng dẫn tương tác (Phím mũi tên, chuột)">
+        <i data-lucide="help-circle"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Presentation Slides Container -->
+  <main id="presentation-viewport">
+    
+    <!-- ================= SLIDE 1: TRANG BÌA & ĐẶT VẤN ĐỀ ================= -->
+    <section class="slide active" id="slide-1" data-slide-index="1">
+      <div class="slide-content-split">
+        
+        <!-- Left Column: Interactive Educational Content (55%) -->
+        <div class="slide-left-col">
+          <div class="slide-meta-badge">
+            <i data-lucide="atom"></i>
+            <span>CHUYÊN ĐỀ 1 • BÀI 1</span>
+          </div>
+
+          <h1 class="main-title">
+            ĐẠI CƯƠNG VỀ <br>
+            <span class="text-gradient-cyan">CƠ CHẾ PHẢN ỨNG</span>
+          </h1>
+
+          <p class="intro-description">
+            Khám phá thế giới lượng tử của các phản ứng hóa học hữu cơ. Đi sâu vào bản chất vi mô: từ sự chuyển dịch đám mây electron, phân cắt liên kết đến hình thành các tiểu phân trung gian hoạt động.
+          </p>
+
+          <!-- 4 Interactive Learning Objective Cards -->
+          <div class="objectives-grid">
+            
+            <!-- Card 1: Khái niệm cơ chế -->
+            <div class="objective-card" data-accent="cyan" data-obj="1">
+              <div class="card-icon-wrap icon-cyan">
+                <i data-lucide="git-commit"></i>
+              </div>
+              <div class="card-body">
+                <div class="card-tag">MỤC TIÊU 01</div>
+                <h3 class="card-title">Bản chất Cơ chế phản ứng</h3>
+                <p class="card-desc">Nêu rõ lộ trình chi tiết từng bước vi mô từ chất phản ứng đến sản phẩm qua trạng thái chuyển tiếp.</p>
+              </div>
+              <div class="card-edge-glow"></div>
+            </div>
+
+            <!-- Card 2: Phân cắt liên kết -->
+            <div class="objective-card" data-accent="purple" data-obj="2">
+              <div class="card-icon-wrap icon-purple">
+                <i data-lucide="scissors"></i>
+              </div>
+              <div class="card-body">
+                <div class="card-tag">MỤC TIÊU 02</div>
+                <h3 class="card-title">Phân cắt Đồng li & Dị li</h3>
+                <p class="card-desc">Sự tạo thành Gốc tự do (R•), Carbocation (C⁺), Carbanion (C⁻) và trật tự độ bền tương đối.</p>
+              </div>
+              <div class="card-edge-glow"></div>
+            </div>
+
+            <!-- Card 3: Tác nhân phản ứng -->
+            <div class="objective-card" data-accent="pink" data-obj="3">
+              <div class="card-icon-wrap icon-pink">
+                <i data-lucide="zap"></i>
+              </div>
+              <div class="card-body">
+                <div class="card-tag">MỤC TIÊU 03</div>
+                <h3 class="card-title">Electrophile & Nucleophile</h3>
+                <p class="card-desc">Nhận diện tác nhân thiếu electron (E⁺ - ái điện tử) và tác nhân giàu electron (Nu: - ái hạt nhân).</p>
+              </div>
+              <div class="card-edge-glow"></div>
+            </div>
+
+            <!-- Card 4: Vai trò sinh học -->
+            <div class="objective-card" data-accent="gold" data-obj="4">
+              <div class="card-icon-wrap icon-gold">
+                <i data-lucide="shield-alert"></i>
+              </div>
+              <div class="card-body">
+                <div class="card-tag">MỤC TIÊU 04</div>
+                <h3 class="card-title">Gốc tự do trong Cơ thể</h3>
+                <p class="card-desc">Ảnh hưởng sinh học: stress oxy hóa, lão hóa tế bào và cơ chế chất chống oxy hóa bảo vệ.</p>
+              </div>
+              <div class="card-edge-glow"></div>
+            </div>
+
+          </div>
+
+          <!-- Interactive Warm-up Question Box Trigger -->
+          <div class="question-trigger-container">
+            <button class="question-toggle-btn" id="open-question-btn">
+              <div class="btn-glow-pill"></div>
+              <i data-lucide="help-circle"></i>
+              <span>❓ Câu hỏi khởi động bài học</span>
+              <i data-lucide="chevron-right" class="arrow-icon"></i>
+            </button>
+            <span class="btn-hint">Nhấp để mở tình huống kích thích tư duy</span>
+          </div>
+
+        </div>
+
+        <!-- Right Column: 3D Molecule Stage Wrapper (45%) -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-1-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula">C₂H₄</span>
+                <span class="name">Ethylene (Ethene)</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip">
+                <span class="dot"></span>
+                <span>Liên kết đôi C=C (1σ + 1π)</span>
+              </div>
+            </div>
+
+            <!-- The dedicated 3D canvas viewport container with anchor -->
+            <div id="slide-1-stage-anchor" class="stage-mount-point">
+              <div id="molecule-3d-stage"></div>
+            </div>
+
+            <!-- 3D Stage Floating Controls & Hints -->
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="zoom-in"></i> Cuộn để Zoom</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="Hạt cầu màu xám: Nguyên tử Carbon (sp²)"><span class="swatch c-atom"></span> Hạt: Carbon</span>
+                <span class="legend-item" title="Hạt cầu màu trắng: Nguyên tử Hydrogen"><span class="swatch h-atom"></span> Hạt: Hydrogen</span>
+                <span class="legend-item" title="2 đoạn que song song: Liên kết đôi C=C"><span class="swatch bond-double"></span> Que: LK đôi (σ+π)</span>
+                <span class="legend-item" title="Đám mây cyan trong suốt: Orbital π"><span class="swatch pi-cloud"></span> Vòm: Đám mây π</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Expandable Interactive Question Modal / Drawer -->
+      <div class="question-modal" id="question-modal">
+        <div class="question-modal-backdrop" id="close-modal-backdrop"></div>
+        <div class="question-modal-content">
+          <button class="modal-close-btn" id="close-question-btn">
+            <i data-lucide="x"></i>
+          </button>
+          
+          <div class="modal-badge">
+            <i data-lucide="sparkles"></i>
+            <span>ĐẶT VẤN ĐỀ TRỌNG TÂM</span>
+          </div>
+
+          <h2 class="modal-title">Tại sao chúng ta phải học Cơ chế phản ứng?</h2>
+          
+          <div class="modal-quote-box">
+            <i data-lucide="quote" class="quote-icon"></i>
+            <p class="quote-text">
+              "Việc nghiên cứu cơ chế phản ứng trong hoá học hữu cơ có vai trò then chốt, giúp chúng ta <strong>dự đoán chiều hướng</strong>, <strong>kiểm soát tốc độ và điều kiện</strong>, cũng như <strong>định hướng tạo thành sản phẩm mong muốn</strong>..."
+            </p>
+          </div>
+
+          <div class="problem-questions">
+            <div class="q-item">
+              <span class="q-num">1</span>
+              <p>Vậy, <strong>cơ chế phản ứng</strong> thực chất là gì dưới góc nhìn va chạm hạt vi mô?</p>
+            </div>
+            <div class="q-item">
+              <span class="q-num">2</span>
+              <p>Cơ chế của một số phản ứng hữu cơ đã học (như phản ứng thế của methane, phản ứng cộng của ethylene) diễn ra qua các bước trung gian nào?</p>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="primary-action-btn" id="explore-slide-2-btn">
+              <span>🚀 Bắt đầu khám phá (Chuyển sang Slide 2)</span>
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: KHÁI NIỆM CƠ CHẾ PHẢN ỨNG & MŨI TÊN CONG ================= -->
+    <section class="slide" id="slide-2" data-slide-index="2">
+      <div class="slide-content-split">
+        
+        <!-- Left Column: Knowledge, Definition, Curved Arrow, Step Controller -->
+        <div class="slide-left-col slide-2-left">
+          
+          <div class="slide-meta-badge">
+            <i data-lucide="layers"></i>
+            <span>I. KHÁI NIỆM CƠ CHẾ VÀ TÁC NHÂN PHẢN ỨNG HỮU CƠ — 1. CƠ CHẾ PHẢN ỨNG</span>
+          </div>
+
+          <h2 class="slide-2-title">
+            CƠ CHẾ PHẢN ỨNG & <br>
+            <span class="text-gradient-cyan">QUY ƯỚC MŨI TÊN CONG 3D</span>
+          </h2>
+
+          <!-- Interactive Definition Card (Click to highlight) -->
+          <div class="definition-card" id="slide2-def-card" data-accent="cyan">
+            <div class="def-card-header">
+              <div class="def-badge">
+                <i data-lucide="book-open"></i>
+                <span>ĐỊNH NGHĨA TRỌNG TÂM</span>
+              </div>
+              <span class="def-click-tip">Nhấp để làm nổi bật ✨</span>
+            </div>
+            <p class="def-quote">
+              "<strong>Cơ chế phản ứng hoá học</strong> là con đường chi tiết mà các chất phản ứng phải đi qua để tạo thành sản phẩm."
+            </p>
+            <div class="def-details">
+              <div class="def-detail-pill">
+                <i data-lucide="split"></i>
+                <span>Phân cắt liên kết cũ & hình thành liên kết mới qua từng giai đoạn</span>
+              </div>
+              <div class="def-detail-pill">
+                <i data-lucide="thermometer"></i>
+                <span>Ảnh hưởng của xúc tác, dung môi, nhiệt độ</span>
+              </div>
+              <div class="def-detail-pill">
+                <i data-lucide="repeat"></i>
+                <span>Một số giai đoạn có thể xảy ra thuận nghịch (⇌)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curved Arrow Convention Card with Animated SVG -->
+          <div class="curved-arrow-card" data-accent="pink">
+            <div class="ca-header">
+              <div class="ca-icon-pill">
+                <span class="ca-symbol">↷</span>
+                <span class="ca-title">QUY ƯỚC MŨI TÊN CONG</span>
+              </div>
+              <span class="ca-tag">Biểu diễn sự chuyển dịch CẶP ELECTRON (2e⁻)</span>
+            </div>
+            
+            <div class="ca-visual-flow">
+              <div class="flow-pole pole-rich">
+                <div class="pole-indicator"></div>
+                <div class="pole-texts">
+                  <span class="pole-label">Trung tâm GIÀU electron</span>
+                  <span class="pole-sub">Liên kết π, Cặp e tự do, Anion (Nu:)</span>
+                </div>
+              </div>
+              
+              <div class="flow-arrow-container">
+                <svg class="curved-arrow-svg" viewBox="0 0 120 44" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="arrow-gradient-dynamic" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#00F5D4" />
+                      <stop offset="60%" stop-color="#00BBF9" />
+                      <stop offset="100%" stop-color="#FF4D6D" />
+                    </linearGradient>
+                    <marker id="arrowhead-dynamic" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                      <polygon points="0 0, 7 3.5, 0 7" fill="#FF4D6D" />
+                    </marker>
+                  </defs>
+                  <path d="M 12,36 Q 60,4 106,26" fill="none" stroke="url(#arrow-gradient-dynamic)" stroke-width="3.5" stroke-linecap="round" class="animated-arrow-path" marker-end="url(#arrowhead-dynamic)"/>
+                </svg>
+                <span class="flow-arrow-text">↷ Di chuyển 1 cặp electron (2e⁻)</span>
+              </div>
+
+              <div class="flow-pole pole-poor">
+                <div class="pole-indicator"></div>
+                <div class="pole-texts">
+                  <span class="pole-label">Trung tâm NGHÈO electron</span>
+                  <span class="pole-sub">Tâm dương E⁺, Nguyên tử mang δ+, Orbital trống</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4-Step Reaction Controller: CH2=CH2 + Br2 -->
+          <div class="reaction-controller-panel">
+            <div class="panel-header">
+              <div class="flex-align">
+                <i data-lucide="play-circle" class="panel-icon"></i>
+                <h4>Mô phỏng cơ chế: Ethylene + Bromine</h4>
+              </div>
+              <span class="panel-formula">CH₂=CH₂ + Br₂ ⟶ BrCH₂-CH₂Br</span>
+            </div>
+
+            <!-- Steps Buttons Grid -->
+            <div class="step-buttons-grid">
+              <button class="step-btn active" data-step="0">
+                <div class="step-num-pill">0</div>
+                <div class="step-info">
+                  <span class="step-name">Trạng thái đầu (Phân cực)</span>
+                  <span class="step-sub">CH₂=CH₂ và Br₂ tiếp cận, phân cực cảm ứng Brᵟ⁺—Brᵟ⁻</span>
+                </div>
+              </button>
+
+              <button class="step-btn" data-step="1">
+                <div class="step-num-pill">1</div>
+                <div class="step-info">
+                  <span class="step-name">Giai đoạn 1: Tấn công Electrophile</span>
+                  <span class="step-sub">Cặp e π phóng sang Brᵟ⁺; liên kết Br—Br phóng e về Brᵟ⁻</span>
+                </div>
+              </button>
+
+              <button class="step-btn" data-step="2">
+                <div class="step-num-pill">2</div>
+                <div class="step-info">
+                  <span class="step-name">Tiểu phân trung gian Carbocation</span>
+                  <span class="step-sub">Tạo Br-CH₂-C⁺H₂ (Carbon mang điện dương) + ion Br⁻</span>
+                </div>
+              </button>
+
+              <button class="step-btn" data-step="3">
+                <div class="step-num-pill">3</div>
+                <div class="step-info">
+                  <span class="step-name">Giai đoạn 2: Tạo sản phẩm bền</span>
+                  <span class="step-sub">Br⁻ tấn công vào C⁺ tạo 1,2-dibromoethane BrCH₂-CH₂Br</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Dynamic 2D Reaction Synchronized Diagram -->
+            <div class="reaction-sync-banner">
+              <div class="sync-banner-top">
+                <span class="sync-stage-tag" id="sync-step-tag">Trạng thái hiện tại: Bước 0</span>
+                <span class="sync-stage-desc" id="sync-step-desc">Ethylene và Bromine ở khoảng cách tương tác ban đầu</span>
+              </div>
+              <div class="sync-formula-display" id="sync-formula-display">
+                <!-- Injected & Highlighted by script.js -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Column: 3D Stage Mount Container for Slide 2 -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-2-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula">CH₂=CH₂ + Br₂</span>
+                <span class="name">Cơ chế Cộng Electrophile (A_E)</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip" id="slide2-step-chip">
+                <span class="dot"></span>
+                <span id="slide2-chip-text">Bước 0: Tiếp cận & Phân cực</span>
+              </div>
+            </div>
+
+            <!-- Stage anchor container: When Slide 2 is active, #molecule-3d-stage docks here -->
+            <div id="slide-2-stage-anchor" class="stage-mount-point"></div>
+
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="play"></i> Bấm bước 0-3 bên trái</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="Hạt cầu C (Xám) và H (Trắng)"><span class="swatch c-atom"></span> Hạt: C & H</span>
+                <span class="legend-item" title="Hạt cầu nâu đỏ sẫm: Nguyên tử Bromine"><span class="swatch br-atom"></span> Hạt: Br (Nâu đỏ)</span>
+                <span class="legend-item" title="Đoạn que nét đứt: Liên kết đang bẻ gãy / tạo thành"><span class="swatch dashed-bond-swatch"></span> Que: LK chuyển tiếp</span>
+                <span class="legend-item" title="Mũi tên cong 2 ngạnh: Dịch chuyển cặp electron"><span class="swatch arrow-curve"></span> Mũi tên: ↷ Cặp e⁻</span>
+                <span class="legend-item" title="Đám mây electron π và ion bromonium cầu"><span class="swatch pi-cloud"></span> Vòm: Ion cầu / Mây π</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: TÁC NHÂN ELECTROPHILE VS. NUCLEOPHILE ================= -->
+    <section class="slide" id="slide-3" data-slide-index="3">
+      <div class="slide-content-split">
+        
+        <!-- Left Column: Knowledge, Dual Symmetrical Cards, Particle Chips -->
+        <div class="slide-left-col slide-3-left">
+          
+          <div class="slide-meta-badge">
+            <i data-lucide="zap"></i>
+            <span>I. KHÁI NIỆM CƠ CHẾ VÀ TÁC NHÂN — 2. TÁC NHÂN PHẢN ỨNG</span>
+          </div>
+
+          <h2 class="slide-3-title">
+            TÁC NHÂN PHẢN ỨNG: <br>
+            <span class="text-gradient-cyan">ELECTROPHILE VS. NUCLEOPHILE</span>
+          </h2>
+
+          <!-- Interactive Equation: Chất phản ứng vs. Tác nhân phản ứng -->
+          <div class="chem-role-banner">
+            <div class="role-banner-header">
+              <span class="role-badge">QUY ƯỚC QUAN TRỌNG</span>
+              <span class="role-hint">Rê chuột vào từng chất để xem vai trò</span>
+            </div>
+            <div class="interactive-equation-display">
+              <div class="eq-substance-wrap" data-tooltip="Chất phản ứng: Chất hữu cơ phức tạp hơn, quyết định cấu tạo sản phẩm">
+                <span class="eq-substance sub-reactant">C₂H₅—Cl</span>
+                <span class="eq-role-label">Chất phản ứng</span>
+              </div>
+              <span class="eq-operator">+</span>
+              <div class="eq-substance-wrap" data-tooltip="Tác nhân phản ứng: Tiểu phân vô cơ hoặc hữu cơ tác động lên chất phản ứng">
+                <span class="eq-substance sub-reagent">NaOH</span>
+                <span class="eq-role-label">Tác nhân phản ứng</span>
+              </div>
+              <span class="eq-arrow">⟶</span>
+              <span class="eq-substance sub-product">C₂H₅—OH</span>
+              <span class="eq-operator">+</span>
+              <span class="eq-substance sub-salt">NaCl</span>
+            </div>
+          </div>
+
+          <!-- Dual Symmetrical Interactive Cards -->
+          <div class="dual-agents-grid">
+            
+            <!-- Card A: Tác nhân Electrophile (Đỏ Cam Neon) -->
+            <div class="agent-card agent-electrophile" data-accent="pink">
+              <div class="agent-card-header">
+                <div class="agent-badge badge-e">
+                  <i data-lucide="plus-circle"></i>
+                  <span>TÁC NHÂN ELECTROPHILE</span>
+                </div>
+                <span class="agent-nickname">"Ái điện tử • Yêu e⁻"</span>
+              </div>
+              <p class="agent-def">
+                Có ái lực với electron; tìm kiếm mật độ electron cao để nhận cặp electron.
+              </p>
+              
+              <div class="agent-chips-group">
+                <div class="chips-category-label">1. Tiểu phân mang điện tích dương:</div>
+                <div class="chips-row">
+                  <button class="agent-chip chip-e active" data-molecule="no2">
+                    <span class="chip-formula">⁺NO₂</span>
+                    <span class="chip-name">Nitronium</span>
+                  </button>
+                  <button class="agent-chip chip-e" data-molecule="h_plus">
+                    <span class="chip-formula">H⁺</span>
+                    <span class="chip-name">Proton</span>
+                  </button>
+                  <button class="agent-chip chip-e" data-molecule="carbocation_r">
+                    <span class="chip-formula">R⁺</span>
+                    <span class="chip-name">Carbocation</span>
+                  </button>
+                </div>
+
+                <div class="chips-category-label">2. Phân tử có trung tâm mang δ+:</div>
+                <div class="chips-row">
+                  <button class="agent-chip chip-e" data-molecule="ch3cl">
+                    <span class="chip-formula">ᵟ⁺CH₃–Clᵟ⁻</span>
+                    <span class="chip-name">Chloromethane</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card B: Tác nhân Nucleophile (Xanh Cyan Neon) -->
+            <div class="agent-card agent-nucleophile" data-accent="cyan">
+              <div class="agent-card-header">
+                <div class="agent-badge badge-nu">
+                  <i data-lucide="minus-circle"></i>
+                  <span>TÁC NHÂN NUCLEOPHILE</span>
+                </div>
+                <span class="agent-nickname">"Ái hạt nhân • Yêu (+) "</span>
+              </div>
+              <p class="agent-def">
+                Có ái lực với hạt nhân; tìm kiếm trung tâm thiếu electron để cho cặp electron.
+              </p>
+              
+              <div class="agent-chips-group">
+                <div class="chips-category-label">1. Tiểu phân mang điện tích âm:</div>
+                <div class="chips-row">
+                  <button class="agent-chip chip-nu" data-molecule="oh_minus">
+                    <span class="chip-formula">HO⁻</span>
+                    <span class="chip-name">Hydroxide</span>
+                  </button>
+                  <button class="agent-chip chip-nu" data-molecule="br_minus">
+                    <span class="chip-formula">Br⁻</span>
+                    <span class="chip-name">Bromide</span>
+                  </button>
+                  <button class="agent-chip chip-nu" data-molecule="ch3o_minus">
+                    <span class="chip-formula">CH₃O⁻</span>
+                    <span class="chip-name">Methoxide</span>
+                  </button>
+                </div>
+
+                <div class="chips-category-label">2. Phân tử có cặp e tự do:</div>
+                <div class="chips-row">
+                  <button class="agent-chip chip-nu" data-molecule="nh3">
+                    <span class="chip-formula">:NH₃</span>
+                    <span class="chip-name">Ammonia</span>
+                  </button>
+                  <button class="agent-chip chip-nu" data-molecule="h2o">
+                    <span class="chip-formula">H₂O:</span>
+                    <span class="chip-name">Nước</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Action: Simulate Electrophile - Nucleophile Attraction -->
+          <div class="simulate-attraction-box">
+            <button class="simulate-attack-btn" id="simulate-attack-btn">
+              <div class="btn-glow-pulse"></div>
+              <i data-lucide="zap"></i>
+              <span>⚡ Mô phỏng Lực hút & Tấn công: Nucleophile ⟶ Electrophile</span>
+            </button>
+            <span class="simulate-hint">Bấm để quan sát mũi tên cong 3D liên kết đôi electron</span>
+          </div>
+
+        </div>
+
+        <!-- Right Column: 3D Stage Mount Container for Slide 3 -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-3-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula" id="slide3-badge-formula">⁺NO₂</span>
+                <span class="name" id="slide3-badge-name">Nitronium (Electrophile)</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip" id="slide3-info-chip">
+                <span class="dot"></span>
+                <span id="slide3-chip-text">Điện tích dương (Ái electron)</span>
+              </div>
+            </div>
+
+            <!-- Stage anchor container: When Slide 3 is active, #molecule-3d-stage docks here -->
+            <div id="slide-3-stage-anchor" class="stage-mount-point"></div>
+
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="sparkles"></i> Bấm các chip bên trái</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="Hạt mang điện dương hoặc tâm thiếu hụt electron"><span class="swatch e-center"></span> Hạt: Electrophile (E⁺)</span>
+                <span class="legend-item" title="Hạt mang điện âm hoặc tâm giàu electron"><span class="swatch nu-center"></span> Hạt: Nucleophile (Nu⁻)</span>
+                <span class="legend-item" title="Đoạn que hình trụ: Liên kết hóa học đơn/đôi"><span class="swatch bond-single"></span> Que: Liên kết hóa học</span>
+                <span class="legend-item" title="Cặp hạt chấm sáng: Cặp electron hóa trị tự do"><span class="swatch lone-pair"></span> Chấm: Cặp e⁻ tự do (:Nu)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: THỬ THÁCH TƯƠNG TÁC PHÂN TÍCH 2 PHẢN ỨNG (SGK T7) ================= -->
+    <section class="slide" id="slide-4" data-slide-index="4">
+      <div class="slide-content-split">
+        
+        <!-- Left Column: Interactive Lab Challenge, Dual Tabs, SGK Problems -->
+        <div class="slide-left-col slide-4-left">
+          
+          <div class="slide-meta-badge">
+            <i data-lucide="award"></i>
+            <span>BÀI TẬP SGK TRANG 7 • THỬ THÁCH TƯƠNG TÁC</span>
+          </div>
+
+          <h2 class="slide-4-title">
+            PHÂN TÍCH VAI TRÒ <br>
+            <span class="text-gradient-cyan">ELECTROPHILE & NUCLEOPHILE</span>
+          </h2>
+
+          <!-- Reaction Tabs Controller -->
+          <div class="challenge-tabs-bar">
+            <button class="challenge-tab active" data-tab="rxn1">
+              <span class="tab-index">01</span>
+              <span>Phản ứng 1: (CH₃)₂C=CHCH₃ + HBr</span>
+            </button>
+            <button class="challenge-tab" data-tab="rxn2">
+              <span class="tab-index">02</span>
+              <span>Phản ứng 2: (CH₃)₃CBr + C₂H₅OH</span>
+            </button>
+          </div>
+
+          <!-- TAB 1 CONTENT: Phản ứng 1 -->
+          <div class="challenge-tab-content active" id="tab-content-rxn1">
+            
+            <div class="mechanism-summary-card">
+              <div class="mech-header">
+                <span class="mech-badge">CƠ CHẾ 2 GIAI ĐOẠN (SGK TRANG 7)</span>
+                <span class="mech-formula">(CH₃)₂C=CHCH₃ + HBr ⟶ (CH₃)₂C(Br)—CH₂CH₃</span>
+              </div>
+
+              <div class="mech-steps-flow">
+                <div class="flow-step-box step-highlight">
+                  <div class="step-tag">GIAI ĐOẠN 1 (CHẬM)</div>
+                  <div class="step-eq">
+                    (CH₃)₂C=CHCH₃ + <span class="text-focus-e">Hᵟ⁺—Brᵟ⁻</span> 
+                    <span class="flow-arrow">⟶</span> 
+                    (CH₃)₂C⁺—CH₂CH₃ + Br⁻
+                  </div>
+                  <span class="step-subtext">Đôi e π phóng tới Hᵟ⁺; liên kết H—Br bẻ gãy dị li giải phóng Br⁻</span>
+                </div>
+
+                <div class="flow-step-box">
+                  <div class="step-tag">GIAI ĐOẠN 2 (NHANH)</div>
+                  <div class="step-eq">
+                    (CH₃)₂C⁺—CH₂CH₃ + <span class="text-focus-nu">Br⁻</span> 
+                    <span class="flow-arrow">⟶</span> 
+                    (CH₃)₂C(Br)—CH₂CH₃
+                  </div>
+                  <span class="step-subtext">Ion Br⁻ mang điện âm tấn công vào Carbocation C⁺</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question Box a -->
+            <div class="interactive-quiz-card" id="quiz-rxn1">
+              <div class="quiz-question-row">
+                <span class="quiz-q-badge">CÂU HỎI A</span>
+                <p class="quiz-q-text">
+                  Trong giai đoạn đầu tiên của Phản ứng 1, <strong>HBr</strong> đóng vai trò tác nhân electrophile hay nucleophile?
+                </p>
+              </div>
+
+              <div class="quiz-options-row">
+                <button class="quiz-choice-btn btn-choice-e" data-reaction="1" data-choice="electrophile">
+                  <i data-lucide="check-circle-2" class="choice-icon"></i>
+                  <span>🔴 Tác nhân Electrophile</span>
+                </button>
+                <button class="quiz-choice-btn btn-choice-nu" data-reaction="1" data-choice="nucleophile">
+                  <i data-lucide="x-circle" class="choice-icon"></i>
+                  <span>🔵 Tác nhân Nucleophile</span>
+                </button>
+              </div>
+
+              <!-- Animated Feedback Box -->
+              <div class="quiz-feedback-box" id="feedback-rxn1">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TAB 2 CONTENT: Phản ứng 2 -->
+          <div class="challenge-tab-content" id="tab-content-rxn2">
+            
+            <div class="mechanism-summary-card">
+              <div class="mech-header">
+                <span class="mech-badge">CƠ CHẾ 3 BƯỚC (SGK TRANG 7)</span>
+                <span class="mech-formula">(CH₃)₃CBr + C₂H₅OH ⟶ (CH₃)₃COC₂H₅ + HBr</span>
+              </div>
+
+              <div class="mech-steps-flow">
+                <div class="flow-step-box">
+                  <div class="step-tag">BƯỚC 1 (DỊ LI)</div>
+                  <div class="step-eq">
+                    (CH₃)₃C—Br ⇌ (CH₃)₃C⁺ + Br⁻
+                  </div>
+                  <span class="step-subtext">Phân cắt dị li liên kết C—Br tạo Carbocation tert-butyl (CH₃)₃C⁺</span>
+                </div>
+
+                <div class="flow-step-box step-highlight">
+                  <div class="step-tag">BƯỚC 2 (TẤN CÔNG NUCLEOPHILE)</div>
+                  <div class="step-eq">
+                    (CH₃)₃C⁺ + <span class="text-focus-nu">HO—C₂H₅</span> 
+                    <span class="flow-arrow">⟶</span> 
+                    (CH₃)₃C—O⁺(H)—C₂H₅
+                  </div>
+                  <span class="step-subtext">Cặp electron tự do trên nguyên tử O của ethanol tấn công vào C⁺</span>
+                </div>
+
+                <div class="flow-step-box">
+                  <div class="step-tag">BƯỚC 3 (TÁCH H⁺)</div>
+                  <div class="step-eq">
+                    (CH₃)₃C—O⁺(H)—C₂H₅ ⟶ (CH₃)₃C—O—C₂H₅ + H⁺
+                  </div>
+                  <span class="step-subtext">Tách proton H⁺ tạo ether (CH₃)₃C—O—C₂H₅ bền vững</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question Box b -->
+            <div class="interactive-quiz-card" id="quiz-rxn2">
+              <div class="quiz-question-row">
+                <span class="quiz-q-badge">CÂU HỎI B</span>
+                <p class="quiz-q-text">
+                  Trong giai đoạn thứ hai của Phản ứng 2, <strong>C₂H₅OH</strong> đóng vai trò tác nhân electrophile hay nucleophile?
+                </p>
+              </div>
+
+              <div class="quiz-options-row">
+                <button class="quiz-choice-btn btn-choice-e" data-reaction="2" data-choice="electrophile">
+                  <i data-lucide="x-circle" class="choice-icon"></i>
+                  <span>🔴 Tác nhân Electrophile</span>
+                </button>
+                <button class="quiz-choice-btn btn-choice-nu" data-reaction="2" data-choice="nucleophile">
+                  <i data-lucide="check-circle-2" class="choice-icon"></i>
+                  <span>🔵 Tác nhân Nucleophile</span>
+                </button>
+              </div>
+
+              <!-- Animated Feedback Box -->
+              <div class="quiz-feedback-box" id="feedback-rxn2">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Column: 3D Stage Mount Container for Slide 4 -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-4-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula" id="slide4-badge-formula">Phản ứng 1</span>
+                <span class="name" id="slide4-badge-name">HBr tấn công Electrophile</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip" id="slide4-info-chip">
+                <span class="dot"></span>
+                <span id="slide4-chip-text">Mô hình Cơ chế 3D</span>
+              </div>
+            </div>
+
+            <!-- Stage anchor container: When Slide 4 is active, #molecule-3d-stage docks here -->
+            <div id="slide-4-stage-anchor" class="stage-mount-point"></div>
+
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="help-circle"></i> Trả lời câu hỏi để kích hoạt 3D</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="Hạt Electrophile (H⁺, ⁺NO₂)"><span class="swatch e-center"></span> Hạt: Electrophile (E⁺)</span>
+                <span class="legend-item" title="Hạt Nucleophile (Br⁻, OH⁻)"><span class="swatch nu-center"></span> Hạt: Nucleophile (Nu⁻)</span>
+                <span class="legend-item" title="Đoạn que nét đứt: Liên kết chuyển tiếp"><span class="swatch dashed-bond-swatch"></span> Que: LK chuyển tiếp</span>
+                <span class="legend-item" title="Mũi tên cong: Dịch chuyển cặp electron"><span class="swatch arrow-curve"></span> Mũi tên: ↷ Cặp e⁻</span>
+                <span class="legend-item" title="Tâm Carbocation C⁺ khuyết electron"><span class="swatch carbocation-center"></span> Vòm: Carbocation C⁺</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 5: SỰ PHÂN CẮT LIÊN KẾT: ĐỒNG LI VS. DỊ LI ================= -->
+    <section class="slide" id="slide-5" data-slide-index="5">
+      <div class="slide-content-split">
+        
+        <!-- Left Column: Cleavage Mode Switcher & Controls -->
+        <div class="slide-left-col slide-5-left">
+          
+          <div class="slide-meta-badge">
+            <i data-lucide="scissors"></i>
+            <span>II. SỰ PHÂN CẮT LIÊN KẾT TRONG HOÁ HỌC HỮU CƠ</span>
+          </div>
+
+          <h2 class="slide-5-title">
+            PHÂN CẮT LIÊN KẾT: <br>
+            <span class="text-gradient-cyan">ĐỒNG LI VS. DỊ LI 3D</span>
+          </h2>
+
+          <!-- Cleavage Mode Switcher Tabs -->
+          <div class="cleavage-mode-switcher">
+            <button class="cleavage-mode-btn active" data-mode="homolytic">
+              <i data-lucide="sun"></i>
+              <span>1. PHÂN CẮT ĐỒNG LI (Homolytic)</span>
+            </button>
+            <button class="cleavage-mode-btn" data-mode="heterolytic">
+              <i data-lucide="zap"></i>
+              <span>2. PHÂN CẮT DỊ LI (Heterolytic)</span>
+            </button>
+          </div>
+
+          <!-- MODE 1 PANEL: Phân cắt đồng li -->
+          <div class="cleavage-panel active" id="panel-homolytic">
+            <div class="cleavage-info-card card-homo">
+              <div class="cleavage-header">
+                <span class="cleavage-badge badge-homo">ĐIỀU KIỆN: ÁNH SÁNG (hν) / NHIỆT ĐỘ (t°)</span>
+                <span class="cleavage-symbol">A : B ⟶ A• + B•</span>
+              </div>
+              <p class="cleavage-desc">
+                Cặp electron dùng chung bị chia đôi đều cho 2 nguyên tử, sử dụng <strong>2 mũi tên cong 1 ngạnh (móc câu ⇀)</strong>, tạo thành các <strong>Gốc tự do (Free Radicals)</strong> mang electron độc thân.
+              </p>
+            </div>
+
+            <!-- 3 SGK Examples Buttons -->
+            <div class="cleavage-examples-group">
+              <div class="group-title">Chọn phản ứng SGK để mô phỏng 3D:</div>
+              <div class="example-buttons-row">
+                <button class="ex-btn active" data-example="cl2">
+                  <span class="ex-formula">Cl—Cl ⟶ 2Cl•</span>
+                  <span class="ex-label">Phân ly Chlorine (hν)</span>
+                </button>
+                <button class="ex-btn" data-example="ch4">
+                  <span class="ex-formula">CH₃—H + Cl• ⟶ •CH₃ + HCl</span>
+                  <span class="ex-label">Tạo gốc Methyl</span>
+                </button>
+                <button class="ex-btn" data-example="c4h10">
+                  <span class="ex-formula">C₂H₅—C₂H₅ ⟶ 2•C₂H₅</span>
+                  <span class="ex-label">Nhiệt phân alkane (t°)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Action Button: Trigger Homolytic Cleavage -->
+            <div class="action-trigger-box">
+              <button class="trigger-cleavage-btn btn-homo" id="btn-trigger-homo">
+                <i data-lucide="sun"></i>
+                <span id="btn-homo-text">☀️ Chiếu Tia UV / Nhiệt độ — Bẻ gãy Đồng li (Tạo Gốc Tự Do)</span>
+              </button>
+              <span class="trigger-hint">Quan sát cặp electron chia đều và quay quanh 2 gốc tự do</span>
+            </div>
+          </div>
+
+          <!-- MODE 2 PANEL: Phân cắt dị li -->
+          <div class="cleavage-panel" id="panel-heterolytic">
+            <div class="cleavage-info-card card-hetero">
+              <div class="cleavage-header">
+                <span class="cleavage-badge badge-hetero">BẢN CHẤT: ĐỘ ÂM ĐIỆN CHÊNH LỆCH</span>
+                <span class="cleavage-symbol">A : B ⟶ A⁺ + :B⁻</span>
+              </div>
+              <p class="cleavage-desc">
+                Cặp electron chung chuyển dịch hoàn toàn về phía nguyên tử có độ âm điện lớn hơn, sử dụng <strong>1 mũi tên cong 2 ngạnh (↷)</strong>, tạo ra <strong>Carbocation (C⁺)</strong> hoặc <strong>Carbanion (C⁻)</strong>.
+              </p>
+            </div>
+
+            <!-- Heterolytic Cases Selection -->
+            <div class="cleavage-examples-group">
+              <div class="group-title">Chọn kiểu tạo tiểu phân trung gian Carbon:</div>
+              <div class="example-buttons-row">
+                <button class="ex-btn active" data-case="carbocation">
+                  <span class="ex-formula">🔴 Tạo Carbocation: (CH₃)₃C–Br ⟶ (CH₃)₃C⁺ + Br⁻</span>
+                  <span class="ex-label">C mang điện (+), tam giác phẳng sp²</span>
+                </button>
+                <button class="ex-btn" data-case="carbanion">
+                  <span class="ex-formula">🔵 Tạo Carbanion: CH₃–C≡C–H ⟶ CH₃–C≡C⁻ + H⁺</span>
+                  <span class="ex-label">C mang điện (-), giữ cặp e liên kết</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Action Button: Trigger Heterolytic Cleavage -->
+            <div class="action-trigger-box">
+              <button class="trigger-cleavage-btn btn-hetero" id="btn-trigger-hetero">
+                <i data-lucide="zap"></i>
+                <span id="btn-hetero-text">⚡ Phân cắt Dị li tạo Carbocation tert-butyl (CH₃)₃C⁺</span>
+              </button>
+              <span class="trigger-hint">Quan sát toàn bộ đôi electron chuyển về nguyên tử có độ âm điện lớn hơn</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: 3D Stage Mount Container for Slide 5 -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-5-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula" id="slide5-badge-formula">Cl—Cl</span>
+                <span class="name" id="slide5-badge-name">Phân cắt đồng li (Ánh sáng hν)</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip" id="slide5-info-chip">
+                <span class="dot"></span>
+                <span id="slide5-chip-text">Trạng thái: Trước khi phân cắt</span>
+              </div>
+            </div>
+
+            <!-- Stage anchor container: When Slide 5 is active, #molecule-3d-stage docks here -->
+            <div id="slide-5-stage-anchor" class="stage-mount-point"></div>
+
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="sparkles"></i> Bấm nút bẻ gãy liên kết</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="Hạt cầu Cl (Xanh lá), C (Xám), H (Trắng)"><span class="swatch cl-sphere-swatch"></span> Hạt: Cl, C, H</span>
+                <span class="legend-item" title="Đoạn que liên kết đơn đang bị bẻ gãy"><span class="swatch dashed-bond-swatch"></span> Que: LK bẻ gãy</span>
+                <span class="legend-item" title="Hạt chấm nhỏ quay quanh: Electron độc thân gốc tự do"><span class="swatch radical-center"></span> Chấm: Electron độc thân (•)</span>
+                <span class="legend-item" title="Chùm hạt tím/vàng chiếu tới: Năng lượng photon UV"><span class="swatch uv-pulse-swatch"></span> Chùm: Photon UV (hν)</span>
+                <span class="legend-item" title="Mũi tên 1 ngạnh móc câu (đồng li) hoặc 2 ngạnh (dị li)"><span class="swatch hook-arrow-swatch"></span> Mũi tên: ⇀ Móc câu / ↷ Cặp e</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 6: TRẠM KHẢO SÁT ĐỘ BỀN TƯƠNG ĐỐI (SGK T8-9) ================= -->
+    <section class="slide" id="slide-6" data-slide-index="6">
+      <div class="slide-content-split">
+        
+        <!-- Left Column: 3D Stability Analyzer & SGK Q1-3 Answers -->
+        <div class="slide-left-col slide-6-left">
+          
+          <div class="slide-meta-badge">
+            <i data-lucide="activity"></i>
+            <span>BÀI TẬP SGK TRANG 8-9 • TRẠM KHẢO SÁT ĐỘ BỀN NĂNG LƯỢNG</span>
+          </div>
+
+          <h2 class="slide-6-title">
+            KHẢO SÁT ĐỘ BỀN TƯƠNG ĐỐI <br>
+            <span class="text-gradient-cyan">GỐC TỰ DO • CARBOCATION • CARBANION</span>
+          </h2>
+
+          <!-- Species 3 Tabs Selector -->
+          <div class="species-tabs-bar">
+            <button class="species-tab active" data-species="radical">
+              <span class="species-dot dot-radical"></span>
+              <span>1. Gốc tự do (Free Radical •)</span>
+            </button>
+            <button class="species-tab" data-species="carbocation">
+              <span class="species-dot dot-carbo"></span>
+              <span>2. Carbocation (C⁺)</span>
+            </button>
+            <button class="species-tab" data-species="carbanion">
+              <span class="species-dot dot-anion"></span>
+              <span>3. Carbanion (C⁻)</span>
+            </button>
+          </div>
+
+          <!-- Carbon Substitution Level Selector (4 Levels) -->
+          <div class="level-selector-box">
+            <div class="level-header">
+              <span class="level-title">CHỌN BẬC NGUYÊN TỬ CARBON:</span>
+              <span class="level-current-badge" id="current-level-badge">Bậc III (3 nhóm alkyl)</span>
+            </div>
+            <div class="level-buttons-grid">
+              <button class="level-btn" data-level="0">
+                <span class="lvl-num">0</span>
+                <span class="lvl-name">Methyl</span>
+                <span class="lvl-formula" id="lvl0-formula">•CH₃</span>
+              </button>
+              <button class="level-btn" data-level="1">
+                <span class="lvl-num">I</span>
+                <span class="lvl-name">Bậc I</span>
+                <span class="lvl-formula" id="lvl1-formula">R–ĊH₂</span>
+              </button>
+              <button class="level-btn" data-level="2">
+                <span class="lvl-num">II</span>
+                <span class="lvl-name">Bậc II</span>
+                <span class="lvl-formula" id="lvl2-formula">R₂ĊH</span>
+              </button>
+              <button class="level-btn active" data-level="3">
+                <span class="lvl-num">III</span>
+                <span class="lvl-name">Bậc III</span>
+                <span class="lvl-formula" id="lvl3-formula">R₃Ċ</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Stability Energy Meter & Dynamic Bar -->
+          <div class="stability-meter-card">
+            <div class="meter-header">
+              <span class="meter-title">ĐÁNH GIÁ ĐỘ BỀN TƯƠNG ĐỐI:</span>
+              <span class="meter-status-tag status-very-stable" id="stability-status-tag">BỀN VỮNG NHẤT ★★★★</span>
+            </div>
+            
+            <div class="meter-progress-track">
+              <div class="meter-progress-fill" id="meter-fill-bar" style="width: 100%;"></div>
+            </div>
+
+            <div class="meter-scale-labels">
+              <span>Rất kém bền (E cao)</span>
+              <span>Trung bình</span>
+              <span>Rất bền (E thấp)</span>
+            </div>
+          </div>
+
+          <!-- SGK Textbook Questions 1, 2, 3 Insights Box -->
+          <div class="sgk-insights-box">
+            <div class="insight-header">
+              <i data-lucide="book-open"></i>
+              <span id="insight-rule-title">QUY LUẬT SGK: Methyl < Bậc I < Bậc II < Bậc III</span>
+            </div>
+            <p class="insight-explanation" id="insight-explanation-text">
+              Các nhóm alkyl (–CH₃, –C₂H₅) có hiệu ứng cảm ứng đẩy electron (+I) dồn mật độ electron về phía nguyên tử Carbon trung tâm đang thiếu hụt electron, giúp giải tỏa điện tích và bù đắp electron độc thân, làm tăng độ bền phân tử.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Right Column: 3D Stage Mount Container for Slide 6 -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-6-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula" id="slide6-badge-formula">(CH₃)₃C•</span>
+                <span class="name" id="slide6-badge-name">Gốc tự do tert-butyl (Bậc III)</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip" id="slide6-info-chip">
+                <span class="dot"></span>
+                <span id="slide6-chip-text">Hiệu ứng đẩy electron (+I)</span>
+              </div>
+            </div>
+
+            <!-- Stage anchor container: When Slide 6 is active, #molecule-3d-stage docks here -->
+            <div id="slide-6-stage-anchor" class="stage-mount-point"></div>
+
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="layers"></i> Bấm chọn bậc 0 - III</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="Hạt Carbon trung tâm bậc I, II, III và các nhóm alkyl"><span class="swatch c-atom"></span> Hạt: Carbon & Hydrogen</span>
+                <span class="legend-item" title="Đoạn que hình trụ: Khung mạch hydrocarbon C-C, C-H"><span class="swatch bond-single"></span> Que: Khung liên kết</span>
+                <span class="legend-item" title="Hạt chấm tím/đỏ: Tâm trung gian phản ứng (• / C⁺)"><span class="swatch radical-center"></span> Chấm: Tâm trung gian (• / C⁺)</span>
+                <span class="legend-item" title="Mũi tên nón cyan: Hiệu ứng cảm ứng đẩy electron +I"><span class="swatch inductive-arrow"></span> Mũi tên: ⇥ Đẩy e (+I)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 7: GỐC TỰ DO TRONG CƠ THỂ & LÁ CHẮN CHỐNG OXI HÓA ================= -->
+    <section class="slide" id="slide-7" data-slide-index="7">
+      <div class="slide-content-split">
+        
+        <!-- LEFT COLUMN: LÝ THUYẾT & ĐIỀU KHIỂN TƯƠNG TÁC -->
+        <div class="slide-left-col slide-7-left">
+          <div class="slide-header-mini">
+            <span class="slide-tag"><i data-lucide="dna"></i> CHUYÊN ĐỀ 1 • VAI TRÒ SINH HỌC & Y HỌC</span>
+            <span class="slide-step-indicator">MỤC TIÊU 4</span>
+          </div>
+
+          <h2 class="slide-7-title">GỐC TỰ DO TRONG CƠ THỂ & LÁ CHẮN CHỐNG OXI HÓA</h2>
+          <p class="slide-subtitle-compact">
+            Gốc tự do là "con dao hai lưỡi": vừa hỗ trợ miễn dịch, vừa tàn phá tế bào nếu dư thừa. Cơ thể tự bảo vệ bằng mạng lưới chất chống oxi hóa.
+          </p>
+
+          <!-- KHU VỰC 1: NGUỒN GỐC SINH RA GỐC TỰ DO -->
+          <div class="s7-section-box">
+            <div class="s7-box-header">
+              <span class="s7-box-title"><i data-lucide="alert-triangle"></i> NGUỒN GỐC SINH RA GỐC TỰ DO TRONG CƠ THỂ</span>
+            </div>
+            <div class="radical-origins-grid">
+              <div class="origin-pill" data-accent="gold" title="Ánh nắng mặt trời kích thích bẻ gãy đồng li tạo gốc tự do trong biểu bì da">
+                <i data-lucide="sun"></i>
+                <div class="origin-info">
+                  <strong>Tia tử ngoại (UV)</strong>
+                  <span>Tổn thương collagen, lão hóa da</span>
+                </div>
+              </div>
+              <div class="origin-pill" data-accent="purple" title="Năng lượng cao ion hóa nước trong mô sinh ra gốc tự do hydroxyl •OH">
+                <i data-lucide="radio"></i>
+                <div class="origin-info">
+                  <strong>Tia phóng xạ & X-ray</strong>
+                  <span>Gây đứt gãy DNA, đột biến tế bào</span>
+                </div>
+              </div>
+              <div class="origin-pill" data-accent="pink" title="Khói thuốc lá, kim loại nặng, thuốc bảo vệ thực vật, khí thải độc">
+                <i data-lucide="cloud-fog"></i>
+                <div class="origin-info">
+                  <strong>Ô nhiễm & Khói thuốc</strong>
+                  <span>Hàng tỷ gốc tự do xâm nhập phổi</span>
+                </div>
+              </div>
+              <div class="origin-pill" data-accent="cyan" title="1-3% oxy trong chuỗi hô hấp tế bào tại ty thể rò rỉ thành gốc tự do">
+                <i data-lucide="zap"></i>
+                <div class="origin-info">
+                  <strong>Trao đổi chất nội sinh</strong>
+                  <span>Ty thể rò rỉ gốc oxy tự nhiên</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KHU VỰC 2: HAI MẶT CỦA GỐC TỰ DO (TOGGLE 3D) -->
+          <div class="s7-section-box">
+            <div class="s7-box-header">
+              <span class="s7-box-title"><i data-lucide="scale"></i> HAI MẶT CỦA GỐC TỰ DO (CHỌN MÔ PHỎNG 3D)</span>
+            </div>
+            <div class="dual-nature-switcher">
+              <button class="nature-btn" data-nature="beneficial" id="btn-nature-bene">
+                <span class="nature-dot dot-bene"></span>
+                <div class="nature-btn-text">
+                  <strong>Gốc tự do CÓ LỢI (•NO)</strong>
+                  <span>Giãn mạch, miễn dịch, truyền tin</span>
+                </div>
+              </button>
+              <button class="nature-btn active" data-nature="harmful" id="btn-nature-harm">
+                <span class="nature-dot dot-harm"></span>
+                <div class="nature-btn-text">
+                  <strong>Gốc tự do CÓ HẠI (•OH)</strong>
+                  <span>Phá hủy tế bào, màng lipid, DNA</span>
+                </div>
+              </button>
+            </div>
+            <div class="nature-desc-card" id="nature-desc-content">
+              <div class="desc-badge badge-harm" id="nature-badge">⚠️ NGUY HIỂM: GỐC HYDROXYL (•OH) CỰC KỲ HÁU ELECTRON</div>
+              <p id="nature-text">
+                Gốc hydroxyl (<strong>•OH</strong>) thiếu electron nên cướp giật electron từ màng lipid tế bào và DNA, gây tổn hại chuỗi di truyền, làm suy thoái mô và phát sinh tế bào ung thư!
+              </p>
+            </div>
+          </div>
+
+          <!-- KHU VỰC 3: HỆ THỐNG LÁ CHẮN CHẤT CHỐNG OXI HÓA -->
+          <div class="s7-section-box shield-control-box">
+            <div class="s7-box-header">
+              <span class="s7-box-title"><i data-lucide="shield-check"></i> HỆ THỐNG LÁ CHẮN CHẤT CHỐNG OXI HÓA (ANTIOXIDANTS)</span>
+              <span class="shield-state-tag" id="shield-state-tag">Lá chắn: ĐANG TẮT</span>
+            </div>
+            
+            <div class="antioxidant-chips-grid">
+              <button class="antioxidant-btn active" data-ao="vitc" id="btn-ao-vitc">
+                <span class="ao-emoji">🍊</span>
+                <div class="ao-meta">
+                  <strong>Vitamin C</strong>
+                  <span>Cam, ớt chuông, dứa (Tan trong nước)</span>
+                </div>
+              </button>
+              <button class="antioxidant-btn" data-ao="vite" id="btn-ao-vite">
+                <span class="ao-emoji">🌻</span>
+                <div class="ao-meta">
+                  <strong>Vitamin E</strong>
+                  <span>Dầu cá, hướng dương (Bảo vệ màng lipid)</span>
+                </div>
+              </button>
+              <button class="antioxidant-btn" data-ao="beta" id="btn-ao-beta">
+                <span class="ao-emoji">🥕</span>
+                <div class="ao-meta">
+                  <strong>β-carotene</strong>
+                  <span>Cà rốt, cà chua, xoài (Tiền Vitamin A)</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Dynamic Mechanism Description for Selected Antioxidant -->
+            <div class="ao-desc-card" id="ao-desc-card" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 8px 10px; margin-top: 6px; margin-bottom: 6px;">
+              <div class="ao-desc-badge" id="ao-desc-badge" style="font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; color: var(--color-cyan); margin-bottom: 4px;">🍊 VITAMIN C (AXIT ASCORBIC): NHƯỜNG 2e⁻ + 2H⁺ TRONG DỊCH TẾ BÀO</div>
+              <p id="ao-desc-text" style="font-size: 0.68rem; color: #CBD5E1; line-height: 1.35; margin: 0;">
+                Cấu trúc vòng furanone 5 cạnh mang 2 nhóm enediol -OH dễ dàng nhường 2e⁻ + 2H⁺ để khử gốc •OH thành H₂O, bảo vệ tế bào trong môi trường dịch thể ngoại bào và tế bào chất.
+              </p>
+            </div>
+
+            <!-- Live Cell Biological Health Status Banner -->
+            <div class="cell-status-banner" id="cell-status-banner" style="display: flex; align-items: center; gap: 8px; font-size: 0.72rem; padding: 6px 10px; border-radius: 8px; background: rgba(255, 77, 109, 0.12); border: 1px solid rgba(255, 77, 109, 0.3); margin-top: 8px; margin-bottom: 8px;">
+              <span class="pulse-indicator red" id="cell-status-indicator"></span>
+              <span id="cell-status-text" style="color: #FF4D6D; font-weight: 600;">CẢNH BÁO: TẾ BÀO ĐANG BỊ GỐC TỰ DO •OH TẤN CÔNG!</span>
+            </div>
+
+            <!-- Action Trigger Button: Activate Antioxidant Shield -->
+            <button class="trigger-shield-btn" id="btn-trigger-shield">
+              <i data-lucide="shield"></i>
+              <span id="shield-btn-label">🛡️ BẬT VÒM LÁ CHẮN NĂNG LƯỢNG — PHÓNG ELECTRON TRUNG HÒA •OH</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: SÂN KHẤU 3D TẾ BÀO SINH HỌC & LÁ CHẮN NĂNG LƯỢNG -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-7-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula" id="slide7-badge-formula">TẾ BÀO & LÁ CHẮN</span>
+                <span class="name" id="slide7-badge-name">Quả cầu sinh học & Chuỗi DNA</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip" id="slide7-info-chip">
+                <span class="dot" id="slide7-status-dot"></span>
+                <span id="slide7-chip-text">Cảnh báo: •OH đang tấn công!</span>
+              </div>
+            </div>
+
+            <!-- Stage anchor container: When Slide 7 is active, #molecule-3d-stage docks here -->
+            <div id="slide-7-stage-anchor" class="stage-mount-point"></div>
+
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="shield"></i> Bấm Bật lá chắn bên trái</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="Hạt N (Xanh dương), O (Đỏ), H (Trắng), Đầu Lipid (Vàng)"><span class="swatch cell-healthy"></span> Hạt: N, O, H & Lipid</span>
+                <span class="legend-item" title="Đoạn que đơn/đôi & Chuỗi zigzag đuôi phytyl"><span class="swatch bond-single"></span> Que: LK & Đuôi lipid</span>
+                <span class="legend-item" title="Chấm vàng háu e trong •OH / Chùm electron cyan nhường từ Vitamin"><span class="swatch radical-harmful"></span> Chấm: e⁻ độc thân / e⁻ nhường</span>
+                <span class="legend-item" title="Vòm lưới màng tế bào & Lá chắn năng lượng Vitamin"><span class="swatch shield-energy"></span> Vòm: Màng tế bào & Lá chắn AO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 8: SƠ ĐỒ TƯ DUY & MINI-GAME KHẢO THÍ ================= -->
+    <section class="slide" id="slide-8" data-slide-index="8">
+      <div class="slide-content-split slide-8-wrap">
+        
+        <!-- LEFT COLUMN: SƠ ĐỒ TƯ DUY & MINI-GAME TRẮC NGHIỆM -->
+        <div class="slide-left-col slide-8-left">
+          <div class="slide-header-mini">
+            <span class="slide-tag"><i data-lucide="award"></i> TỔNG KẾT & ĐÁNH GIÁ NĂNG LỰC</span>
+            <span class="slide-step-indicator">TỔNG KẾT</span>
+          </div>
+
+          <h2 class="slide-8-title">HỆ THỐNG HÓA KIẾN THỨC & CHINH PHỤC CƠ CHẾ PHẢN ỨNG</h2>
+
+          <!-- Slide 8 Mode Tabs (Mindmap vs Mini-Game) -->
+          <div class="s8-tabs-bar">
+            <button class="s8-tab active" data-tab="mindmap" id="tab-btn-mindmap">
+              <i data-lucide="network"></i>
+              <span>Sơ Đồ Tư Duy Tương Tác</span>
+            </button>
+            <button class="s8-tab" data-tab="game" id="tab-btn-game">
+              <i data-lucide="trophy"></i>
+              <span>Mini-Game Chinh Phục (5 Câu)</span>
+              <span class="game-badge-score" id="game-badge-score">0/500</span>
+            </button>
+          </div>
+
+          <!-- TAB CONTENT 1: SƠ ĐỒ TƯ DUY TƯƠNG TÁC (MINDMAP) -->
+          <div class="s8-tab-content active" id="tab-content-mindmap">
+            <div class="mindmap-nodes-container">
+              
+              <!-- Node 1: Bản chất & Mũi tên cong -->
+              <div class="mindmap-card node-1" data-goto-slide="2">
+                <div class="mm-header">
+                  <span class="mm-num">01</span>
+                  <strong>Cơ Chế & Mũi Tên Cong</strong>
+                  <button class="mm-jump-btn" title="Xem lại mô hình 3D Slide 2">Slide 2 <i data-lucide="external-link"></i></button>
+                </div>
+                <div class="mm-body">
+                  <div class="mm-tag-row">
+                    <span class="mm-tag cyan">↷ 2 electron</span>
+                    <span class="mm-tag gold">⇀ 1 electron</span>
+                  </div>
+                  <p>Mũi tên cong luôn bắt đầu từ trung tâm giàu e (Nucleophile) ⟶ trung tâm nghèo e (Electrophile).</p>
+                </div>
+              </div>
+
+              <!-- Node 2: Cặp tác nhân đối lập -->
+              <div class="mindmap-card node-2" data-goto-slide="3">
+                <div class="mm-header">
+                  <span class="mm-num">02</span>
+                  <strong>Electrophile vs Nucleophile</strong>
+                  <button class="mm-jump-btn" title="Xem lại mô hình 3D Slide 3">Slide 3 <i data-lucide="external-link"></i></button>
+                </div>
+                <div class="mm-body">
+                  <div class="mm-tag-row">
+                    <span class="mm-tag pink">Electrophile (E⁺, δ⁺)</span>
+                    <span class="mm-tag cyan">Nucleophile (Nu⁻, :B)</span>
+                  </div>
+                  <p>E⁺ tìm kiếm mật độ điện tích âm; Nu⁻ giàu electron tấn công vào tâm mang điện dương.</p>
+                </div>
+              </div>
+
+              <!-- Node 3: Hai kiểu phân cắt liên kết -->
+              <div class="mindmap-card node-3" data-goto-slide="5">
+                <div class="mm-header">
+                  <span class="mm-num">03</span>
+                  <strong>Phân Cắt Đồng Li vs Dị Li</strong>
+                  <button class="mm-jump-btn" title="Xem lại mô hình 3D Slide 5">Slide 5 <i data-lucide="external-link"></i></button>
+                </div>
+                <div class="mm-body">
+                  <div class="mm-tag-row">
+                    <span class="mm-tag gold">Đồng li (hν, t°) ⟶ Gốc tự do</span>
+                    <span class="mm-tag blue">Dị li ⟶ Ion (C⁺, C⁻)</span>
+                  </div>
+                  <p>Đồng li chia đều electron; Dị li cặp electron thuộc hẳn về nguyên tử có độ âm điện lớn hơn.</p>
+                </div>
+              </div>
+
+              <!-- Node 4: Quy luật độ bền -->
+              <div class="mindmap-card node-4" data-goto-slide="6">
+                <div class="mm-header">
+                  <span class="mm-num">04</span>
+                  <strong>Quy Luật Độ Bền Tương Đối</strong>
+                  <button class="mm-jump-btn" title="Xem lại mô hình 3D Slide 6">Slide 6 <i data-lucide="external-link"></i></button>
+                </div>
+                <div class="mm-body">
+                  <div class="mm-tag-row">
+                    <span class="mm-tag pink">C⁺, R•: Bậc III > II > I > Methyl</span>
+                    <span class="mm-tag cyan">Carbanion: Methyl > I > II > III</span>
+                  </div>
+                  <p>Hiệu ứng cảm ứng +I đẩy e làm tăng bền cho Carbocation & Gốc tự do, nhưng làm giảm bền Carbanion.</p>
+                </div>
+              </div>
+
+              <!-- Node 5: Sinh học & Lá chắn -->
+              <div class="mindmap-card node-5" data-goto-slide="7">
+                <div class="mm-header">
+                  <span class="mm-num">05</span>
+                  <strong>Gốc Tự Do & Chất Chống Oxi Hóa</strong>
+                  <button class="mm-jump-btn" title="Xem lại mô hình 3D Slide 7">Slide 7 <i data-lucide="external-link"></i></button>
+                </div>
+                <div class="mm-body">
+                  <div class="mm-tag-row">
+                    <span class="mm-tag green">Có lợi: •NO truyền tin</span>
+                    <span class="mm-tag red">Có hại: •OH phá tế bào</span>
+                    <span class="mm-tag gold">Vitamin C, E, β-carotene</span>
+                  </div>
+                  <p>Chất chống oxi hoá nhường electron dập tắt gốc tự do, bảo vệ tế bào và hệ gen DNA.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 2: MINI-GAME TRẮC NGHIỆM 5 CÂU HỎI -->
+          <div class="s8-tab-content" id="tab-content-game">
+            <div class="quiz-game-wrapper">
+              
+              <!-- Quiz Header Bar -->
+              <div class="qgame-header">
+                <div class="qgame-progress-info">
+                  <span class="qgame-q-idx" id="qgame-q-idx">CÂU 1 / 5</span>
+                  <div class="qgame-bar-track">
+                    <div class="qgame-bar-fill" id="qgame-bar-fill" style="width: 20%;"></div>
+                  </div>
+                </div>
+                <div class="qgame-score-badge">
+                  <i data-lucide="flame"></i>
+                  <span id="qgame-current-score">0</span> <small>ĐIỂM</small>
+                </div>
+              </div>
+
+              <!-- Question Container -->
+              <div class="qgame-card" id="qgame-card">
+                <div class="qgame-question-text" id="qgame-question-text">
+                  Chiều của mũi tên cong (↷) trong cơ chế phản ứng hữu cơ biểu diễn điều gì?
+                </div>
+
+                <div class="qgame-options-list" id="qgame-options-list">
+                  <!-- Generated by JS -->
+                </div>
+
+                <div class="qgame-feedback-box" id="qgame-feedback-box">
+                  <div class="qgame-fb-title" id="qgame-fb-title"></div>
+                  <div class="qgame-fb-text" id="qgame-fb-text"></div>
+                </div>
+
+                <div class="qgame-nav-row">
+                  <button class="qgame-next-btn" id="qgame-next-btn" disabled>
+                    <span>Câu tiếp theo</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Multi-Tier Result / Victory Modal -->
+              <div class="qgame-victory-card" id="qgame-victory-card" style="display: none;">
+                <div class="victory-trophy-icon" id="victory-trophy-icon">🏆</div>
+                <h3 class="victory-title" id="victory-title">XUẤT SẮC! BẠN ĐÃ CHINH PHỤC TOÀN BỘ CHUYÊN ĐỀ!</h3>
+                <p class="victory-desc" id="victory-desc">Bạn đã hoàn thành 5/5 câu hỏi trắc nghiệm với điểm số tuyệt đối. Toàn bộ các mục tiêu cốt lõi về Cơ chế phản ứng hữu cơ đã được làm chủ!</p>
+                <div class="victory-final-score">
+                  <span>TỔNG ĐIỂM:</span> <strong id="victory-score-val">500 / 500</strong>
+                </div>
+                <div class="victory-actions-row">
+                  <button class="victory-restart-btn" id="victory-review-btn" style="display: none; background: rgba(0, 245, 212, 0.15); border-color: var(--color-cyan); color: var(--color-cyan);">
+                    <i data-lucide="network"></i>
+                    <span>Xem lại Sơ Đồ Tư Duy</span>
+                  </button>
+                  <button class="victory-restart-btn" id="victory-restart-btn">
+                    <i data-lucide="rotate-ccw"></i>
+                    <span>Làm lại Mini-Game</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: SÂN KHẤU 3D CHIẾN THẮNG & PHÁO HOA PHÂN TỬ -->
+        <div class="slide-right-col">
+          <div class="stage-card-frame" id="slide-8-stage-frame">
+            <div class="stage-header-overlay">
+              <div class="molecule-badge">
+                <span class="formula" id="slide8-badge-formula">FULLERENE C₆₀</span>
+                <span class="name" id="slide8-badge-name">Buckyball & Pháo hoa lượng tử</span>
+              </div>
+              <button class="btn-quick-glossary" onclick="window.open3DGlossary()" title="Xem giải thích chi tiết các hạt, que, chấm, mũi tên trên mô hình 3D">
+                <i data-lucide="help-circle"></i>
+                <span>Chú thích 3D</span>
+              </button>
+              <div class="orbital-info-chip" id="slide8-info-chip">
+                <span class="dot"></span>
+                <span id="slide8-chip-text">Trạm tổng kết 3D</span>
+              </div>
+            </div>
+
+            <!-- Stage anchor container: When Slide 8 is active, #molecule-3d-stage docks here -->
+            <div id="slide-8-stage-anchor" class="stage-mount-point"></div>
+
+            <div class="stage-footer-overlay">
+              <div class="interaction-hints">
+                <span><i data-lucide="mouse-pointer"></i> Kéo xoay 360°</span>
+                <span><i data-lucide="trophy"></i> Trả lời đúng 5/5 để bắn pháo hoa</span>
+              </div>
+              <div class="orbital-legend">
+                <span class="legend-item" title="60 hạt Carbon lai hóa sp² tạo thành khối đa diện đều"><span class="swatch c-atom"></span> Hạt: 60 Carbon (C₆₀)</span>
+                <span class="legend-item" title="90 que liên kết đơn và đôi tạo vòng 5 và 6 cạnh"><span class="swatch bond-single"></span> Que: 90 LK C-C</span>
+                <span class="legend-item" title="Chùm hạt pháo hoa lượng tử vinh danh kiến thức"><span class="swatch inductive-arrow"></span> Chùm: Pháo hoa lượng tử</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= PRESENTER DOCK (FLOATING BOTTOM BAR) ================= -->
+  <footer class="presenter-dock-container">
+    <div class="presenter-dock">
+      
+      <!-- Slide Navigation Group -->
+      <div class="dock-group dock-nav">
+        <button class="dock-btn" id="prev-slide-btn" title="Slide trước (Phím ⬅️)">
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <div class="slide-counter-display">
+          <span id="counter-current">01</span>
+          <span class="counter-sep">/</span>
+          <span id="counter-total">08</span>
+        </div>
+
+        <button class="dock-btn" id="next-slide-btn" title="Slide tiếp theo (Phím ➡️ hoặc Space)">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- Quick Slide Selector Pills (8 Slides) -->
+      <div class="dock-group dock-pills" id="slide-pills-list">
+        <button class="pill-dot active" data-target-slide="1" title="Slide 1: Trang bìa & Đặt vấn đề">
+          <span class="pill-num">1</span>
+          <span class="pill-tooltip">01. Đại cương & Đặt vấn đề</span>
+        </button>
+        <button class="pill-dot" data-target-slide="2" title="Slide 2: Khái niệm cơ chế phản ứng">
+          <span class="pill-num">2</span>
+          <span class="pill-tooltip">02. Khái niệm cơ chế</span>
+        </button>
+        <button class="pill-dot" data-target-slide="3" title="Slide 3: Tác nhân Electrophile vs Nucleophile">
+          <span class="pill-num">3</span>
+          <span class="pill-tooltip">03. Electrophile vs Nucleophile</span>
+        </button>
+        <button class="pill-dot" data-target-slide="4" title="Slide 4: Thử thách phân tích phản ứng SGK T7">
+          <span class="pill-num">4</span>
+          <span class="pill-tooltip">04. Thử thách SGK Trang 7</span>
+        </button>
+        <button class="pill-dot" data-target-slide="5" title="Slide 5: Phân cắt liên kết Đồng li vs Dị li">
+          <span class="pill-num">5</span>
+          <span class="pill-tooltip">05. Phân cắt liên kết (Đồng li / Dị li)</span>
+        </button>
+        <button class="pill-dot" data-target-slide="6" title="Slide 6: Trạm khảo sát độ bền tương đối">
+          <span class="pill-num">6</span>
+          <span class="pill-tooltip">06. Trạm khảo sát độ bền (SGK T8-9)</span>
+        </button>
+        <button class="pill-dot" data-target-slide="7" title="Slide 7: Gốc tự do trong cơ thể & Lá chắn chất chống oxi hóa">
+          <span class="pill-num">7</span>
+          <span class="pill-tooltip">07. Gốc tự do sinh học & Lá chắn</span>
+        </button>
+        <button class="pill-dot" data-target-slide="8" title="Slide 8: Sơ đồ tư duy & Mini-Game chinh phục">
+          <span class="pill-num">8</span>
+          <span class="pill-tooltip">08. Sơ đồ tư duy & Mini-Game</span>
+        </button>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- 3D Viewport Controls Group -->
+      <div class="dock-group dock-tools">
+        
+        <!-- X-Ray Electron Cloud Toggle -->
+        <button class="dock-btn-tool" id="toggle-xray-btn" title="Bật/Tắt Chế độ Kính hiển vi Lượng tử (X-Ray Electron Cloud)">
+          <i data-lucide="eye"></i>
+          <span class="tool-label">X-Ray Orbital</span>
+          <span class="tool-status-dot"></span>
+        </button>
+
+        <!-- Auto-Rotate 3D Toggle -->
+        <button class="dock-btn-tool active" id="toggle-autorotate-btn" title="Bật/Tắt Tự động xoay mô hình 3D">
+          <i data-lucide="rotate-cw"></i>
+          <span class="tool-label">Auto Rotate</span>
+        </button>
+
+        <!-- Reset Camera Position -->
+        <button class="dock-btn-tool" id="reset-camera-btn" title="Đặt lại góc nhìn Camera 3D mặc định">
+          <i data-lucide="compass"></i>
+          <span class="tool-label">Reset View</span>
+        </button>
+
+        <!-- 3D Component Glossary / Chú thích ký hiệu 3D -->
+        <button class="dock-btn-tool" id="toggle-glossary-btn" title="Bảng giải thích ký hiệu mô hình 3D (Hạt, Que, Chấm, Mũi tên, Vòm)">
+          <i data-lucide="help-circle"></i>
+          <span class="tool-label">Chú thích 3D</span>
+        </button>
+
+        <!-- Fullscreen Toggle -->
+        <button class="dock-btn-tool" id="toggle-fullscreen-btn" title="Chế độ Toàn màn hình (F11)">
+          <i data-lucide="maximize"></i>
+        </button>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Help & Keyboard ShortCut Modal -->
+  <div class="help-dialog" id="help-dialog">
+    <div class="help-dialog-card">
+      <div class="help-dialog-header">
+        <div class="flex-align">
+          <i data-lucide="keyboard"></i>
+          <h3>Phím tắt & Thao tác tương tác 3D</h3>
+        </div>
+        <button class="modal-close-btn" id="close-help-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="shortcuts-list">
+        <div class="sc-row"><kbd>➡️</kbd> hoặc <kbd>Space</kbd> <span>Chuyển sang Slide kế tiếp</span></div>
+        <div class="sc-row"><kbd>⬅️</kbd> <span>Quay lại Slide trước</span></div>
+        <div class="sc-row"><kbd>1</kbd> - <kbd>8</kbd> <span>Nhảy trực tiếp đến Slide tương ứng</span></div>
+        <div class="sc-row"><kbd>R</kbd> <span>Bật/Tắt tự động xoay 3D (Auto-Rotate)</span></div>
+        <div class="sc-row"><kbd>X</kbd> <span>Bật/Tắt chế độ X-Ray mây electron</span></div>
+        <div class="sc-row"><kbd>H</kbd> <span>Mở/Đóng Bảng giải thích ký hiệu 3D</span></div>
+        <div class="sc-row"><kbd>Chuột trái + Kéo</kbd> <span>Xoay mô hình phân tử 360°</span></div>
+        <div class="sc-row"><kbd>Cuộn chuột</kbd> <span>Phóng to / thu nhỏ mô hình</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D Component Explanations & Molecular Legend Modal -->
+  <div class="glossary-dialog" id="glossary-dialog">
+    <div class="glossary-dialog-backdrop" id="close-glossary-backdrop"></div>
+    <div class="glossary-dialog-card">
+      <div class="glossary-dialog-header">
+        <div class="flex-align">
+          <i data-lucide="microscope"></i>
+          <div>
+            <h3>BẢNG GIẢI MÃ KÝ HIỆU MÔ HÌNH 3D (HÓA HỌC 12)</h3>
+            <p class="glossary-subtitle">Quy ước chuẩn quốc tế CPK & Ký hiệu cơ chế lượng tử trên mô hình 3D</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="close-glossary-btn" title="Đóng bảng chú thích (ESC)">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="glossary-tabs">
+        <button class="glossary-tab-btn active" data-tab="all">Tất cả (5 nhóm)</button>
+        <button class="glossary-tab-btn" data-tab="atoms">🔴 Hạt nguyên tử</button>
+        <button class="glossary-tab-btn" data-tab="bonds">➖ Đoạn que liên kết</button>
+        <button class="glossary-tab-btn" data-tab="electrons">✨ Hạt chấm electron</button>
+        <button class="glossary-tab-btn" data-tab="arrows">↷ Mũi tên động</button>
+        <button class="glossary-tab-btn" data-tab="shells">🌐 Vòm lưới & Mây</button>
+      </div>
+
+      <div class="glossary-content-scroll">
+        <!-- Section 1: Hạt nguyên tử & Ion -->
+        <div class="glossary-section" data-cat="atoms">
+          <div class="glossary-sec-title">
+            <span class="sec-dot red"></span>
+            <h4>1. CÁC HẠT CẦU (NGUYÊN TỬ, ION & ĐẦU PHÂN TỬ - HỆ QUY ƯỚC CPK)</h4>
+          </div>
+          <div class="glossary-grid">
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview c-sphere"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt màu xám đậm / Đen</div>
+                <div class="item-chem">Nguyên tử Carbon (C)</div>
+                <div class="item-desc">Tâm khung xương hợp chất hữu cơ, lai hóa sp³, sp², sp. Bán kính chuẩn 0.35 - 0.42 đơn vị 3D.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview h-sphere"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt màu trắng bạc / Xám nhạt</div>
+                <div class="item-chem">Nguyên tử Hydrogen (H)</div>
+                <div class="item-desc">Kích thước nhỏ nhất (bán kính 0.2 đơn vị), liên kết với C, O, N qua liên kết đơn σ.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview o-sphere"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt màu đỏ tươi / Đỏ cam</div>
+                <div class="item-chem">Nguyên tử Oxygen (O)</div>
+                <div class="item-desc">Độ âm điện cao (3.44), mang cặp e tự do hoặc mang điện tích âm cục bộ δ⁻. Gặp trong •OH, H₂O, Vitamin C, Vitamin E.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview n-sphere"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt màu xanh dương / Lam</div>
+                <div class="item-chem">Nguyên tử Nitrogen (N)</div>
+                <div class="item-desc">Độ âm điện 3.04, mang cặp electron hoá trị tự do (như :NH₃) hoặc điện tích dương (như ⁺NO₂).</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview br-sphere"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt màu nâu đỏ sẫm</div>
+                <div class="item-chem">Nguyên tử Bromine (Br)</div>
+                <div class="item-desc">Kích thước lớn (bán kính 0.52 đơn vị), độ âm điện 2.96. Gặp trong Br₂, ion bromonium cầu, và bromoalkane.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview cl-sphere"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt màu xanh lá neon</div>
+                <div class="item-chem">Nguyên tử Chlorine (Cl)</div>
+                <div class="item-desc">Halogen điển hình trong phân cắt đồng li Cl₂ và phân cắt dị li R-Cl thành cation carbocation R⁺ và anion Cl⁻.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview lipid-sphere"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt màu vàng nhũ óng ánh</div>
+                <div class="item-chem">Đầu phân cực Phospholipid</div>
+                <div class="item-desc">Đầu ưa nước của lớp màng tế bào sinh học kép, tạo nên lá chắn tự nhiên của tế bào cơ thể sống.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="sphere-preview ion-halo"></span></div>
+              <div class="item-info">
+                <div class="item-name">Hạt có vòng hào quang sáng</div>
+                <div class="item-chem">Tâm mang điện tích (Cation / Anion)</div>
+                <div class="item-desc">Vòng đỏ cam = Tâm thiếu hụt e (E⁺ / Carbocation C⁺). Vòng xanh cyan = Tâm dư thừa e (Nu⁻ / Carbanion C⁻).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Đoạn que liên kết -->
+        <div class="glossary-section" data-cat="bonds">
+          <div class="glossary-sec-title">
+            <span class="sec-dot cyan"></span>
+            <h4>2. CÁC ĐOẠN QUE / ỐNG NỐI (LIÊN KẾT HÓA HỌC & KHUNG MẠCH)</h4>
+          </div>
+          <div class="glossary-grid">
+            <div class="glossary-item">
+              <div class="item-visual"><span class="bond-preview single-bond"></span></div>
+              <div class="item-info">
+                <div class="item-name">1 Đoạn que trụ thẳng</div>
+                <div class="item-chem">Liên kết đơn cộng hóa trị (σ)</div>
+                <div class="item-desc">Trục đối xứng dọc liên kết hình thành do sự xen phủ trục giữa các orbital nguyên tử. Rất bền vững.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="bond-preview double-bond"></span></div>
+              <div class="item-info">
+                <div class="item-name">2 Đoạn que song song</div>
+                <div class="item-chem">Liên kết đôi (1σ + 1π)</div>
+                <div class="item-desc">Bao gồm 1 liên kết σ ở giữa và 1 liên kết π xen phủ bên lỏng lẻo hơn, là trung tâm giàu electron dễ bị Electrophile tấn công.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="bond-preview dashed-bond"></span></div>
+              <div class="item-info">
+                <div class="item-name">Đoạn que nét đứt / mờ phát sáng</div>
+                <div class="item-chem">Liên kết chuyển tiếp (Đang bẻ gãy / Hình thành)</div>
+                <div class="item-desc">Biểu diễn trạng thái liên kết đang dãn dài, suy yếu dần trước khi đứt hẳn, hoặc liên kết non trẻ đang hình thành từng phần.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="bond-preview zigzag-bond"></span></div>
+              <div class="item-info">
+                <div class="item-name">Chuỗi que gấp khúc zigzag</div>
+                <div class="item-chem">Khung mạch hydrocarbon no / Đuôi lipid kỵ nước</div>
+                <div class="item-desc">Góc hóa trị xấp xỉ 109.5° đặc trưng của chuỗi sp³ aliphatic (như đuôi 16-carbon phytyl của Vitamin E cắm sâu neo màng).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Hạt chấm electron & Năng lượng -->
+        <div class="glossary-section" data-cat="electrons">
+          <div class="glossary-sec-title">
+            <span class="sec-dot gold"></span>
+            <h4>3. CÁC HẠT CHẤM NHỎ PHÁT SÁNG (ELECTRON, GỐC TỰ DO & NĂNG LƯỢNG)</h4>
+          </div>
+          <div class="glossary-grid">
+            <div class="glossary-item">
+              <div class="item-visual"><span class="dot-preview radical-dot"></span></div>
+              <div class="item-info">
+                <div class="item-name">1 Hạt chấm đơn độc quay quanh nguyên tử</div>
+                <div class="item-chem">Electron độc thân (Gốc tự do R•, Cl•, •NO, •OH)</div>
+                <div class="item-desc">Chưa tạo cặp ghép đôi, orbital bán bão hòa, có xu hướng cực kỳ mãnh liệt cướp giật electron từ các phân tử lân cận.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="dot-preview pair-dots"></span></div>
+              <div class="item-info">
+                <div class="item-name">Cặp 2 hạt chấm ở giữa 2 nguyên tử</div>
+                <div class="item-chem">Cặp electron dùng chung (Liên kết cộng hóa trị)</div>
+                <div class="item-desc">Mỗi nguyên tử góp 1 electron để đạt cấu hình octet bền vững. Khi bẻ gãy dị li, cả cặp e này dịch chuyển về 1 phía.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="dot-preview lone-dots"></span></div>
+              <div class="item-info">
+                <div class="item-name">Cặp 2 hạt chấm ở ngoài biên nguyên tử</div>
+                <div class="item-chem">Cặp electron hóa trị tự do (Lone pair :Nu)</div>
+                <div class="item-desc">Đặc trưng của tác nhân Nucleophile (:NH₃, H₂O:, :Br⁻, HO⁻) sẵn sàng nhường cho trung tâm thiếu hụt electron.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="dot-preview photon-pulse"></span></div>
+              <div class="item-info">
+                <div class="item-name">Chùm hạt tím / vàng lao tới liên kết</div>
+                <div class="item-chem">Photon ánh sáng UV (hν) / Xung nhiệt năng (t°)</div>
+                <div class="item-desc">Cung cấp năng lượng kích thích chính xác bằng hoặc lớn hơn năng lượng liên kết để bẻ gãy liên kết hóa học.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="dot-preview spark-dot"></span></div>
+              <div class="item-info">
+                <div class="item-name">Chùm hạt chấm cyan / xanh ngọc phát ra</div>
+                <div class="item-chem">Electron bảo vệ nhường từ Vitamin / Chất chống oxy hóa</div>
+                <div class="item-desc">Vitamin C, Vitamin E nhường electron và ion H⁺ để trung hòa gốc tự do •OH thành H₂O vô hại, bảo vệ tế bào.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Mũi tên động -->
+        <div class="glossary-section" data-cat="arrows">
+          <div class="glossary-sec-title">
+            <span class="sec-dot purple"></span>
+            <h4>4. CÁC MŨI TÊN ĐỘNG (DỊCH CHUYỂN ELECTRON & HIỆU ỨNG CẢM ỨNG)</h4>
+          </div>
+          <div class="glossary-grid">
+            <div class="glossary-item">
+              <div class="item-visual"><span class="arrow-preview double-barb">↷</span></div>
+              <div class="item-info">
+                <div class="item-name">Mũi tên cong 2 ngạnh (↷)</div>
+                <div class="item-chem">Dịch chuyển của cả CẶP electron</div>
+                <div class="item-desc">Xuất phát từ nơi giàu e (liên kết π, lone pair) hướng đến nơi nghèo e (tâm thiếu hụt, nguyên tử có độ âm điện lớn hơn).</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="arrow-preview fish-hook">⇀</span></div>
+              <div class="item-info">
+                <div class="item-name">Mũi tên cong 1 ngạnh móc câu (⇀)</div>
+                <div class="item-chem">Dịch chuyển của MỘT electron độc thân</div>
+                <div class="item-desc">Đặc trưng độc quyền trong cơ chế Phân cắt đồng li: 2 mũi tên móc câu đi về 2 phía nguyên tử tạo nên 2 gốc tự do.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="arrow-preview inductive-cone">⇥</span></div>
+              <div class="item-info">
+                <div class="item-name">Mũi tên hình nón dọc theo liên kết que</div>
+                <div class="item-chem">Hiệu ứng cảm ứng electron (+I / -I)</div>
+                <div class="item-desc">Mũi tên xanh cyan hướng về phía tâm carbocation/gốc tự do thể hiện nhóm alkyl (-CH₃, -C₂H₅) đẩy electron (+I) làm giải tỏa điện tích.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Vòm lưới & Đám mây -->
+        <div class="glossary-section" data-cat="shells">
+          <div class="glossary-sec-title">
+            <span class="sec-dot green"></span>
+            <h4>5. CÁC VÒM LƯỚI & ĐÁM MÂY (ORBITAL & CẤU TRÚC SINH HỌC)</h4>
+          </div>
+          <div class="glossary-grid">
+            <div class="glossary-item">
+              <div class="item-visual"><span class="shell-preview pi-cloud"></span></div>
+              <div class="item-info">
+                <div class="item-name">Khối mây bầu dục trong suốt (Cyan / Cam)</div>
+                <div class="item-chem">Đám mây xác suất Orbital π</div>
+                <div class="item-desc">Không gian có xác suất tìm thấy electron cao xung quanh liên kết đôi, hoặc orbital trống sẵn sàng nhận electron.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="shell-preview cell-mesh"></span></div>
+              <div class="item-info">
+                <div class="item-name">Quả cầu lưới đa giác lớn</div>
+                <div class="item-chem">Màng tế bào sinh học khỏe mạnh</div>
+                <div class="item-desc">Mô phỏng màng tế bào sống trong cơ thể. Khi bị gốc tự do tấn công sẽ xuất hiện các đốm đỏ tổn thương và lão hóa.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="shell-preview shield-mesh"></span></div>
+              <div class="item-info">
+                <div class="item-name">Vòm đa diện phát sáng năng lượng</div>
+                <div class="item-chem">Lá chắn chất chống oxy hóa (Antioxidant Shield)</div>
+                <div class="item-desc">Vòm bảo vệ do Vitamin C, Vitamin E hoặc β-carotene thiết lập, ngăn chặn gốc •OH chạm vào màng tế bào và chuỗi DNA.</div>
+              </div>
+            </div>
+
+            <div class="glossary-item">
+              <div class="item-visual"><span class="shell-preview dna-helix"></span></div>
+              <div class="item-info">
+                <div class="item-name">Chuỗi xoắn kép trung tâm</div>
+                <div class="item-chem">Đại phân tử DNA trong nhân tế bào</div>
+                <div class="item-desc">Chứa mã di truyền của cơ thể, là mục tiêu nhạy cảm dễ bị gốc tự do •OH bẻ gãy liên kết photphodieste gây đột biến ung thư.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glossary-dialog-footer">
+        <span class="footer-tip"><i data-lucide="info"></i> <strong>Mẹo:</strong> Nhấn phím <kbd>H</kbd> hoặc click nút <strong>[Chú thích 3D]</strong> trên thanh điều khiển dưới cùng để mở nhanh bảng này bất kỳ lúc nào.</span>
+        <button class="glossary-close-action-btn" id="btn-close-glossary-bottom">Đã hiểu • Đóng lại</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN Scripts: Three.js (r128), OrbitControls, GSAP (3.12.2), Lucide Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Main JavaScript Application -->
+  <script src="script.js"></script>
+
+</body>
+</html>
